@@ -21,7 +21,7 @@
 
     header {
       background: #ffd400;
-      padding: 20px;
+      padding: 22px 15px;
       text-align: center;
       font-size: 25px;
       font-weight: bold;
@@ -61,10 +61,13 @@
       outline: none;
     }
 
+    input:focus {
+      border-color: #111;
+    }
+
     .network-buttons {
       display: flex;
       gap: 10px;
-      margin-top: 15px;
     }
 
     .network {
@@ -99,7 +102,7 @@
     .bundle {
       border: 2px solid #eee;
       border-radius: 12px;
-      padding: 16px;
+      padding: 17px;
       cursor: pointer;
       background: white;
       transition: 0.2s;
@@ -118,6 +121,7 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
+      gap: 10px;
     }
 
     .data {
@@ -148,24 +152,12 @@
       cursor: pointer;
     }
 
-    .continue:active {
-      transform: scale(0.98);
-    }
-
     .message {
       margin-top: 15px;
       padding: 13px;
       border-radius: 10px;
-      background: #eef7ee;
-      color: #176b17;
       display: none;
       font-size: 14px;
-    }
-
-    .note {
-      font-size: 12px;
-      color: #777;
-      margin-top: 12px;
       line-height: 1.5;
     }
 
@@ -186,8 +178,9 @@
 
 <div class="container">
 
-  <!-- PHONE -->
+  <!-- PHONE NUMBER -->
   <div class="card">
+
     <h2>1. Enter Phone Number</h2>
 
     <label for="phone">Ghana Phone Number</label>
@@ -198,11 +191,13 @@
       placeholder="e.g. 0241234567"
       maxlength="10"
     >
+
   </div>
 
 
   <!-- NETWORK -->
   <div class="card">
+
     <h2>2. Select Network</h2>
 
     <div class="network-buttons">
@@ -224,6 +219,7 @@
       </button>
 
     </div>
+
   </div>
 
 
@@ -232,30 +228,35 @@
 
     <h2>3. Choose Data Bundle</h2>
 
-    <div class="bundles" id="bundleList"></div>
-
-    <div class="note">
-      Bundle availability and eligibility can vary by network and customer.
-      The payment and automatic data delivery system will be connected separately.
-    </div>
+    <div
+      class="bundles"
+      id="bundleList"
+    ></div>
 
   </div>
 
 
-  <!-- PAYMENT -->
+  <!-- ORDER -->
   <div class="card">
 
     <h2>4. Order</h2>
 
-    <button class="continue" onclick="continueOrder()">
+    <button
+      class="continue"
+      onclick="continueOrder()"
+    >
       Continue to Payment
     </button>
 
-    <div class="message" id="message"></div>
+    <div
+      class="message"
+      id="message"
+    ></div>
 
   </div>
 
 </div>
+
 
 <footer>
   © 2026 Ghana Data Shop
@@ -268,80 +269,99 @@
   let selectedBundle = null;
 
 
-  /*
-    MTN OFFICIAL DATA ZONE EXAMPLES
-
-    These are eligibility-based offers.
-    They are not guaranteed to be available to every MTN number.
-  */
+  /* =========================
+     MTN SHOP PRICES
+     ========================= */
 
   const mtnBundles = [
 
     {
-      data: "327.25 MB",
-      price: 2.99,
-      validity: "1 Day"
+      data: "300MB",
+      price: 2,
+      validity: "Shop Bundle"
     },
 
     {
-      data: "495.40 MB",
-      price: 3.99,
-      validity: "1 Day"
+      data: "500MB",
+      price: 3,
+      validity: "Shop Bundle"
     },
 
     {
-      data: "806.45 MB",
-      price: 5.99,
-      validity: "1 Day"
+      data: "1GB",
+      price: 5,
+      validity: "Shop Bundle"
+    },
+
+    {
+      data: "2GB",
+      price: 10,
+      validity: "Shop Bundle"
+    },
+
+    {
+      data: "3GB",
+      price: 15,
+      validity: "Shop Bundle"
+    },
+
+    {
+      data: "5GB",
+      price: 20,
+      validity: "Shop Bundle"
     }
 
   ];
 
 
-  /*
-    TELECEL OFFICIAL OFFER EXAMPLES
-  */
+  /* =========================
+     TELECEL
+     ========================= */
 
   const telecelBundles = [
 
     {
-      data: "501.4 MB",
+      data: "501.4MB",
       price: 2.50,
       validity: "24 Hours"
     },
 
     {
-      data: "891.4 MB",
+      data: "891.4MB",
       price: 3.50,
       validity: "24 Hours"
     },
 
     {
-      data: "1.45 GB",
+      data: "1.45GB",
       price: 4.50,
       validity: "24 Hours"
     },
 
     {
-      data: "770 MB",
-      price: 5.00,
+      data: "770MB",
+      price: 5,
       validity: "3 Days"
     },
 
     {
-      data: "990 MB",
-      price: 10.00,
+      data: "990MB",
+      price: 10,
       validity: "15 Days"
     },
 
     {
-      data: "2.53 GB",
-      price: 20.00,
+      data: "2.53GB",
+      price: 20,
       validity: "5 Days"
     }
 
   ];
 
+
+  /* =========================
+     SELECT NETWORK
+     ========================= */
 
   function selectNetwork(network) {
 
@@ -355,6 +375,7 @@
     document
       .getElementById("telecelBtn")
       .classList.remove("selected-network");
+
 
     if (network === "MTN") {
 
@@ -370,13 +391,20 @@
 
     }
 
+
     displayBundles();
+
   }
 
 
+  /* =========================
+     DISPLAY BUNDLES
+     ========================= */
+
   function displayBundles() {
 
-    const list = document.getElementById("bundleList");
+    const list =
+      document.getElementById("bundleList");
 
     list.innerHTML = "";
 
@@ -386,11 +414,13 @@
       : telecelBundles;
 
 
-    bundles.forEach((bundle, index) => {
+    bundles.forEach(function(bundle) {
 
-      const div = document.createElement("div");
+      const div =
+        document.createElement("div");
 
       div.className = "bundle";
+
 
       div.innerHTML = `
 
@@ -407,7 +437,7 @@
         </div>
 
         <div class="validity">
-          Validity: ${bundle.validity}
+          ${bundle.validity}
         </div>
 
       `;
@@ -417,9 +447,12 @@
 
         document
           .querySelectorAll(".bundle")
-          .forEach(item => {
+          .forEach(function(item) {
+
             item.classList.remove("selected");
+
           });
+
 
         div.classList.add("selected");
 
@@ -435,10 +468,16 @@
   }
 
 
+  /* =========================
+     CONTINUE TO PAYMENT
+     ========================= */
+
   function continueOrder() {
 
     const phone =
-      document.getElementById("phone").value.trim();
+      document.getElementById("phone")
+      .value
+      .trim();
 
     const message =
       document.getElementById("message");
@@ -447,37 +486,33 @@
     if (phone.length < 10) {
 
       message.style.display = "block";
-
       message.style.background = "#ffecec";
-
       message.style.color = "#b00000";
 
       message.innerText =
         "Please enter a valid Ghana phone number.";
 
       return;
+
     }
 
 
     if (!selectedBundle) {
 
       message.style.display = "block";
-
       message.style.background = "#ffecec";
-
       message.style.color = "#b00000";
 
       message.innerText =
         "Please select a data bundle.";
 
       return;
+
     }
 
 
     message.style.display = "block";
-
     message.style.background = "#eef7ee";
-
     message.style.color = "#176b17";
 
     message.innerText =
@@ -487,12 +522,15 @@
       selectedBundle.data +
       " for GH₵" +
       selectedBundle.price.toFixed(2) +
-      ". Payment connection will be added next.";
+      ". Payment will be connected next.";
 
   }
 
 
-  // Load MTN bundles when the site opens
+  /* =========================
+     LOAD MTN FIRST
+     ========================= */
+
   displayBundles();
 
 </script>
