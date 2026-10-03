@@ -15,56 +15,35 @@
     }
 
     body {
-      background: #f5f6f8;
-      color: #111;
+      background: #f4f6f8;
+      color: #222;
     }
 
     header {
-      background: #111;
-      color: white;
-      padding: 18px 20px;
+      background: #ffd400;
+      padding: 20px;
       text-align: center;
-    }
-
-    header h1 {
       font-size: 25px;
-    }
-
-    header p {
-      margin-top: 5px;
-      color: #ddd;
-      font-size: 14px;
+      font-weight: bold;
     }
 
     .container {
       width: 94%;
-      max-width: 700px;
-      margin: 25px auto;
-    }
-
-    .hero {
-      background: linear-gradient(135deg, #ffcc00, #ffd92f);
-      border-radius: 18px;
-      padding: 25px 20px;
-      text-align: center;
-      margin-bottom: 20px;
-    }
-
-    .hero h2 {
-      font-size: 26px;
-      margin-bottom: 8px;
-    }
-
-    .hero p {
-      font-size: 15px;
+      max-width: 500px;
+      margin: 20px auto;
     }
 
     .card {
       background: white;
-      border-radius: 16px;
+      border-radius: 15px;
       padding: 20px;
-      margin-bottom: 20px;
+      margin-bottom: 18px;
       box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    }
+
+    h2 {
+      margin-bottom: 15px;
+      font-size: 20px;
     }
 
     label {
@@ -80,115 +59,114 @@
       border-radius: 10px;
       font-size: 16px;
       outline: none;
-      margin-bottom: 18px;
-    }
-
-    input:focus {
-      border-color: #ffca00;
-    }
-
-    .network-title {
-      font-size: 18px;
-      font-weight: bold;
-      margin-bottom: 12px;
     }
 
     .network-buttons {
       display: flex;
       gap: 10px;
-      margin-bottom: 20px;
+      margin-top: 15px;
     }
 
-    .network-btn {
+    .network {
       flex: 1;
       padding: 14px;
       border: none;
       border-radius: 10px;
-      font-size: 16px;
       font-weight: bold;
+      font-size: 16px;
       cursor: pointer;
     }
 
     .mtn {
-      background: #ffcc00;
+      background: #ffd400;
       color: #111;
     }
 
     .telecel {
-      background: #e51b23;
+      background: #e30613;
       color: white;
     }
 
-    .network-btn.active {
-      box-shadow: 0 0 0 3px #111;
+    .selected-network {
+      outline: 4px solid #111;
     }
 
     .bundles {
       display: grid;
-      grid-template-columns: 1fr 1fr;
       gap: 12px;
     }
 
     .bundle {
-      border: 1px solid #ddd;
-      border-radius: 14px;
+      border: 2px solid #eee;
+      border-radius: 12px;
       padding: 16px;
       cursor: pointer;
-      background: #fff;
+      background: white;
       transition: 0.2s;
     }
 
     .bundle:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+      border-color: #111;
     }
 
     .bundle.selected {
-      border: 2px solid #111;
-      background: #fffbe5;
+      border-color: #111;
+      background: #f1f1f1;
     }
 
-    .bundle h3 {
+    .bundle-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .data {
       font-size: 19px;
-      margin-bottom: 7px;
-    }
-
-    .bundle .price {
-      font-size: 17px;
       font-weight: bold;
-      margin-bottom: 5px;
     }
 
-    .bundle small {
+    .price {
+      font-size: 19px;
+      font-weight: bold;
+    }
+
+    .validity {
+      margin-top: 7px;
       color: #666;
+      font-size: 14px;
     }
 
-    .buy-btn {
+    .continue {
       width: 100%;
-      border: none;
       padding: 16px;
       background: #111;
       color: white;
+      border: none;
       border-radius: 12px;
       font-size: 17px;
       font-weight: bold;
       cursor: pointer;
-      margin-top: 20px;
     }
 
-    .buy-btn:hover {
-      background: #333;
+    .continue:active {
+      transform: scale(0.98);
     }
 
     .message {
-      display: none;
       margin-top: 15px;
-      padding: 14px;
+      padding: 13px;
       border-radius: 10px;
-      background: #e9f8ed;
-      color: #176b2c;
-      font-weight: bold;
-      text-align: center;
+      background: #eef7ee;
+      color: #176b17;
+      display: none;
+      font-size: 14px;
+    }
+
+    .note {
+      font-size: 12px;
+      color: #777;
+      margin-top: 12px;
+      line-height: 1.5;
     }
 
     footer {
@@ -197,36 +175,22 @@
       color: #777;
       font-size: 13px;
     }
-
-    @media (max-width: 500px) {
-      .bundles {
-        grid-template-columns: 1fr;
-      }
-
-      .hero h2 {
-        font-size: 23px;
-      }
-    }
   </style>
 </head>
 
 <body>
 
 <header>
-  <h1>Ghana Data Shop</h1>
-  <p>Buy MTN & Telecel data bundles</p>
+  🇬🇭 Ghana Data Shop
 </header>
 
 <div class="container">
 
-  <div class="hero">
-    <h2>Buy Data Easily</h2>
-    <p>Select your network, choose a bundle and continue.</p>
-  </div>
-
+  <!-- PHONE -->
   <div class="card">
+    <h2>1. Enter Phone Number</h2>
 
-    <label for="phone">Phone Number</label>
+    <label for="phone">Ghana Phone Number</label>
 
     <input
       type="tel"
@@ -234,40 +198,60 @@
       placeholder="e.g. 0241234567"
       maxlength="10"
     >
+  </div>
 
-    <div class="network-title">
-      Select Network
-    </div>
+
+  <!-- NETWORK -->
+  <div class="card">
+    <h2>2. Select Network</h2>
 
     <div class="network-buttons">
 
       <button
-        class="network-btn mtn active"
-        onclick="selectNetwork('MTN', this)"
+        class="network mtn selected-network"
+        id="mtnBtn"
+        onclick="selectNetwork('MTN')"
       >
         MTN
       </button>
 
       <button
-        class="network-btn telecel"
-        onclick="selectNetwork('Telecel', this)"
+        class="network telecel"
+        id="telecelBtn"
+        onclick="selectNetwork('Telecel')"
       >
         Telecel
       </button>
 
     </div>
+  </div>
 
-    <div class="network-title">
-      Available Bundles
+
+  <!-- BUNDLES -->
+  <div class="card">
+
+    <h2>3. Choose Data Bundle</h2>
+
+    <div class="bundles" id="bundleList"></div>
+
+    <div class="note">
+      Bundle availability and eligibility can vary by network and customer.
+      The payment and automatic data delivery system will be connected separately.
     </div>
 
-    <div id="bundles" class="bundles"></div>
+  </div>
 
-    <button class="buy-btn" onclick="buyBundle()">
+
+  <!-- PAYMENT -->
+  <div class="card">
+
+    <h2>4. Order</h2>
+
+    <button class="continue" onclick="continueOrder()">
       Continue to Payment
     </button>
 
-    <div id="message" class="message"></div>
+    <div class="message" id="message"></div>
 
   </div>
 
@@ -277,92 +261,165 @@
   © 2026 Ghana Data Shop
 </footer>
 
+
 <script>
 
   let selectedNetwork = "MTN";
   let selectedBundle = null;
 
+
   /*
-    Initial bundle display.
+    MTN OFFICIAL DATA ZONE EXAMPLES
 
-    Telecel examples are based on current information
-    published on Telecel Ghana's website.
-
-    MTN bundles will later be connected to the backend/API
-    so prices and benefits can be updated without editing
-    this page.
+    These are eligibility-based offers.
+    They are not guaranteed to be available to every MTN number.
   */
 
-  const bundles = {
+  const mtnBundles = [
 
-    MTN: [
-      {
-        name: "1 GB",
-        price: 10,
-        validity: "Data Bundle"
-      },
-      {
-        name: "2 GB",
-        price: 20,
-        validity: "Data Bundle"
-      },
-      {
-        name: "5 GB",
-        price: 50,
-        validity: "Data Bundle"
-      },
-      {
-        name: "10 GB",
-        price: 100,
-        validity: "Data Bundle"
-      }
-    ],
+    {
+      data: "327.25 MB",
+      price: 2.99,
+      validity: "1 Day"
+    },
 
-    Telecel: [
-      {
-        name: "770 MB",
-        price: 5,
-        validity: "3 days"
-      },
-      {
-        name: "990 MB",
-        price: 10,
-        validity: "15 days"
-      },
-      {
-        name: "2.53 GB",
-        price: 20,
-        validity: "5 days"
-      }
-    ]
+    {
+      data: "495.40 MB",
+      price: 3.99,
+      validity: "1 Day"
+    },
 
-  };
+    {
+      data: "806.45 MB",
+      price: 5.99,
+      validity: "1 Day"
+    }
+
+  ];
+
+
+  /*
+    TELECEL OFFICIAL OFFER EXAMPLES
+  */
+
+  const telecelBundles = [
+
+    {
+      data: "501.4 MB",
+      price: 2.50,
+      validity: "24 Hours"
+    },
+
+    {
+      data: "891.4 MB",
+      price: 3.50,
+      validity: "24 Hours"
+    },
+
+    {
+      data: "1.45 GB",
+      price: 4.50,
+      validity: "24 Hours"
+    },
+
+    {
+      data: "770 MB",
+      price: 5.00,
+      validity: "3 Days"
+    },
+
+    {
+      data: "990 MB",
+      price: 10.00,
+      validity: "15 Days"
+    },
+
+    {
+      data: "2.53 GB",
+      price: 20.00,
+      validity: "5 Days"
+    }
+
+  ];
+
+
+  function selectNetwork(network) {
+
+    selectedNetwork = network;
+    selectedBundle = null;
+
+    document
+      .getElementById("mtnBtn")
+      .classList.remove("selected-network");
+
+    document
+      .getElementById("telecelBtn")
+      .classList.remove("selected-network");
+
+    if (network === "MTN") {
+
+      document
+        .getElementById("mtnBtn")
+        .classList.add("selected-network");
+
+    } else {
+
+      document
+        .getElementById("telecelBtn")
+        .classList.add("selected-network");
+
+    }
+
+    displayBundles();
+  }
+
 
   function displayBundles() {
 
-    const container = document.getElementById("bundles");
+    const list = document.getElementById("bundleList");
 
-    container.innerHTML = "";
+    list.innerHTML = "";
 
-    selectedBundle = null;
+    const bundles =
+      selectedNetwork === "MTN"
+      ? mtnBundles
+      : telecelBundles;
 
-    bundles[selectedNetwork].forEach((bundle, index) => {
+
+    bundles.forEach((bundle, index) => {
 
       const div = document.createElement("div");
 
       div.className = "bundle";
 
       div.innerHTML = `
-        <h3>${bundle.name}</h3>
-        <div class="price">GH₵${bundle.price.toFixed(2)}</div>
-        <small>${bundle.validity}</small>
+
+        <div class="bundle-top">
+
+          <div class="data">
+            ${bundle.data}
+          </div>
+
+          <div class="price">
+            GH₵${bundle.price.toFixed(2)}
+          </div>
+
+        </div>
+
+        <div class="validity">
+          Validity: ${bundle.validity}
+        </div>
+
       `;
+
 
       div.onclick = function() {
 
         document
           .querySelectorAll(".bundle")
-          .forEach(item => item.classList.remove("selected"));
+          .forEach(item => {
+            item.classList.remove("selected");
+          });
 
         div.classList.add("selected");
 
@@ -370,74 +427,72 @@
 
       };
 
-      container.appendChild(div);
+
+      list.appendChild(div);
 
     });
 
   }
 
-  function selectNetwork(network, button) {
 
-    selectedNetwork = network;
+  function continueOrder() {
 
-    document
-      .querySelectorAll(".network-btn")
-      .forEach(btn => btn.classList.remove("active"));
+    const phone =
+      document.getElementById("phone").value.trim();
 
-    button.classList.add("active");
+    const message =
+      document.getElementById("message");
 
-    displayBundles();
 
-  }
-
-  function buyBundle() {
-
-    const phone = document.getElementById("phone").value.trim();
-
-    const message = document.getElementById("message");
-
-    if (!phone) {
+    if (phone.length < 10) {
 
       message.style.display = "block";
-      message.style.background = "#ffe8e8";
-      message.style.color = "#b00020";
-      message.innerText = "Please enter the phone number.";
+
+      message.style.background = "#ffecec";
+
+      message.style.color = "#b00000";
+
+      message.innerText =
+        "Please enter a valid Ghana phone number.";
 
       return;
-
     }
 
-    if (phone.length !== 10 || !/^[0-9]+$/.test(phone)) {
-
-      message.style.display = "block";
-      message.style.background = "#ffe8e8";
-      message.style.color = "#b00020";
-      message.innerText = "Enter a valid 10-digit Ghana phone number.";
-
-      return;
-
-    }
 
     if (!selectedBundle) {
 
       message.style.display = "block";
-      message.style.background = "#ffe8e8";
-      message.style.color = "#b00020";
-      message.innerText = "Please select a data bundle.";
+
+      message.style.background = "#ffecec";
+
+      message.style.color = "#b00000";
+
+      message.innerText =
+        "Please select a data bundle.";
 
       return;
-
     }
 
+
     message.style.display = "block";
-    message.style.background = "#fff4cc";
-    message.style.color = "#6b5200";
+
+    message.style.background = "#eef7ee";
+
+    message.style.color = "#176b17";
 
     message.innerText =
-      `Selected: ${selectedNetwork} ${selectedBundle.name} for GH₵${selectedBundle.price.toFixed(2)}. Payment will be connected in the next step.`;
+      "Selected " +
+      selectedNetwork +
+      " " +
+      selectedBundle.data +
+      " for GH₵" +
+      selectedBundle.price.toFixed(2) +
+      ". Payment connection will be added next.";
 
   }
 
+
+  // Load MTN bundles when the site opens
   displayBundles();
 
 </script>
